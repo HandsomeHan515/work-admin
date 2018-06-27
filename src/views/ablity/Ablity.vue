@@ -23,7 +23,7 @@
       <el-table :data="tableData" stripe border v-loading="isFetching">
         <el-table-column prop="name" label="能力模块"></el-table-column>
         <el-table-column prop="level_two" label="归属二级分类"></el-table-column>
-        <el-table-column label="面试问题"></el-table-column>
+        <el-table-column prop="question" label="面试问题"></el-table-column>
         <el-table-column label="相关岗位"></el-table-column>
         <el-table-column prop="is_level" :formatter="formatterLevel" label="是否有分级"></el-table-column>
         <el-table-column label="操作">

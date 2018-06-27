@@ -22,7 +22,7 @@
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
-            <i class="el-icon-document"></i>
+            <i class="el-icon-question"></i>
             <span>面试问题管理</span>
           </template>
           <el-menu-item index="/question">
