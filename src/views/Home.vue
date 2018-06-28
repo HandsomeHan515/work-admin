@@ -36,7 +36,7 @@
               <i class="fa fa-line-chart"></i>
               <span>岗位管理</span>
             </template>
-            <el-menu-item index="123">
+            <el-menu-item index="/job">
               <i class="fa fa-line-chart"></i>
               <span>岗位列表</span>
             </el-menu-item>

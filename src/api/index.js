@@ -39,4 +39,8 @@ export const delQuestion = id => axios.delete(`${base}/questions/${id}/`).then(r
 export const updateQuestion = (id, params) => axios.patch(`${base}/questions/${id}/`, params).then(res => res.data);
 export const searchQeustion = params => axios.post(`${base}/questions/search/`, params).then(res => res.data);
 
-
+/**
+ * 岗位管理
+ */
+export const getJobs = page => axios.get(`${base}/jobs/?page=${page}`).then(res => res.data);
+export const getJobDetail = id => axios.get(`${base}/jobs/${id}/`).then(res => res.data);

@@ -33,5 +33,14 @@ export default new Router({
         { path: '/question/:id', name: '编辑问题', component: () => import('@/views/question/QuestionDetail') },
       ]
     },
+    {
+      path: '/',
+      name: 'Job',
+      component: Home,
+      children: [
+        { path: '/job', name: '岗位列表', component: () => import('@/views/job/Job') },
+        { path: '/job/:id', name: '编辑岗位', component: () => import('@/views/job/JobDetail') },
+      ]
+    },
   ]
 })
