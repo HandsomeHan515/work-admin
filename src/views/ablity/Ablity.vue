@@ -25,7 +25,7 @@
         <el-table-column prop="level_two" label="归属二级分类"></el-table-column>
         <el-table-column prop="question" label="面试问题"></el-table-column>
         <el-table-column prop="job" label="相关岗位"></el-table-column>
-        <el-table-column prop="is_level" :formatter="formatterLevel" label="是否有分级"></el-table-column>
+        <el-table-column prop="level" :formatter="formatterLevel" label="是否有分级"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button @click="handleClickEdit(scope.row)" type="text" size="small">编辑</el-button>
@@ -72,7 +72,7 @@ export default {
       this.getAblitys(page);
     },
     formatterLevel(row) {
-      if (row.is_level) return "是";
+      if (row.level) return "是";
       return "否";
     },
     handleClickSearch() {

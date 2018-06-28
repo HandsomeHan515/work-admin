@@ -36,6 +36,7 @@
         <el-table-column prop="id" label="排序"></el-table-column>
         <el-table-column prop="name" label="能力名称"></el-table-column>
         <el-table-column prop="level_two" label="二级分类"></el-table-column>
+        <el-table-column prop="level" label="能力级别"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button @click="handleClickEdit(scope.row)" type="text" size="small">编辑</el-button>
