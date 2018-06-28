@@ -19,12 +19,17 @@
         <el-row>
           <el-col :span="8">
             <el-form-item label="一级分类">
-              <el-select v-model="form.level_one"></el-select>
+              <el-select v-model="form.level_one" disabled>
+                <el-option :label="form.level_one" :value="form.level_one">
+                </el-option>
+              </el-select>
             </el-form-item>
           </el-col>
            <el-col :span="8">
             <el-form-item label="二级分类">
-              <el-select v-model="form.level_two"></el-select>
+              <el-select v-model="form.level_two" disabled>
+                <el-option :label="form.level_two" :value="form.level_two"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
         </el-row>

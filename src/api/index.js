@@ -24,6 +24,7 @@ export const getAblitys = page => axios.get(`${base}/ablitys/?page=${page}`).the
 export const getAblityDetail = id => axios.get(`${base}/ablitys/${id}/`).then(res => res.data);
 export const updateAblity = (id, params) => axios.patch(`${base}/ablitys/${id}/`, params).then(res => res.data);
 export const searchAblity = params => axios.post(`${base}/ablitys/search/`, params).then(res => res.data);
+export const addAblity = params => axios.post(`${base}/ablitys/`, params).then(res => res.data);
 
 export const getAblityLevelOne = params => axios.get(`${base}/ablitys/levelone/`).then(res => res.data);
 export const AddLevelOne = params => axios.post(`${base}/ablitys/levelone/`, params).then(res => res.data);
@@ -44,3 +45,6 @@ export const searchQeustion = params => axios.post(`${base}/questions/search/`, 
  */
 export const getJobs = page => axios.get(`${base}/jobs/?page=${page}`).then(res => res.data);
 export const getJobDetail = id => axios.get(`${base}/jobs/${id}/`).then(res => res.data);
+
+export const getJobLevelOne = params => axios.get(`${base}/jobs/levelone/`).then(res => res.data);
+export const getJobLevelTwo = params => axios.get(`${base}/jobs/leveltwo/`).then(res => res.data);

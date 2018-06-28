@@ -12,7 +12,7 @@
         <el-row>
           <el-col :span="8">
             <el-form-item label="一级分类">
-              <el-select v-model="form.level_one">
+              <el-select v-model="form.level_one" @change="handleClickChangeOne">
                 <el-option 
                   v-for="(item, index) in levelone" :key="index"
                   :label="item.name" 
@@ -32,7 +32,7 @@
             <el-form-item label="二级分类">
               <el-select v-model="form.level_two">
                 <el-option 
-                  v-for="(item, index) in leveltwo" :key="index"
+                  v-for="(item, index) in two" :key="index"
                   :label="item.name" 
                   :value="item.id">
                 </el-option>
@@ -45,8 +45,28 @@
             </el-form-item>
           </el-col>
         </el-row>
+        <el-row>
+          <el-col :span="4">
+            <el-button @click="handleClickAdd" type="primary" round>添加能力</el-button>
+          </el-col>
+        </el-row>
       </el-form>
     </el-card>
+    <el-row>
+      <el-button type="info" @click="handleClickGoback">返回</el-button>
+    </el-row>
+
+    <el-dialog
+      title="添加能力"
+      :visible.sync="visible"
+      width="30%"
+      :before-close="handleClose">
+      <el-input placeholder="输入能力名称" v-model="name"></el-input>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="visible = false">取 消</el-button>
+        <el-button type="primary" @click="handleClickAddAblity">确 定</el-button>
+      </span>
+    </el-dialog>
     <el-dialog
       title="添加一级分类"
       :visible.sync="dialogVisible"
@@ -98,14 +118,17 @@ import * as api from "../../api";
 export default {
   data() {
     return {
+      name: "",
       form: {},
       oneForm: {},
       twoForm: {},
       isFetching: true,
       levelone: [],
       leveltwo: [],
+      two: [],
       dialogVisible: false,
-      dialogVisible2: false
+      dialogVisible2: false,
+      visible: false
     };
   },
   mounted() {
@@ -179,6 +202,54 @@ export default {
           duration: 2000
         });
       }
+    },
+    handleClickGoback() {
+      this.$router.go(-1);
+    },
+    handleClickAdd() {
+      if (!this.form.level_one) {
+        this.$notify({
+          title: "提示",
+          message: "请选择一级标签",
+          duration: 2000
+        });
+      } else if (!this.form.level_two) {
+        this.$notify({
+          title: "提示",
+          message: "请选择二级标签",
+          duration: 2000
+        });
+      } else {
+        this.visible = true;
+      }
+    },
+    handleClickAddAblity() {
+      if (this.name) {
+        let params = {
+          name: this.name,
+          level_one: this.form.level_one,
+          level_two: this.form.level_two
+        };
+        api.addAblity(params).then(res => {
+          this.$notify({
+            title: "提示",
+            message: "操作成功",
+            duration: 2000
+          });
+          this.visible = false;
+        });
+      } else {
+        this.$notify({
+          title: "提示",
+          message: "请输入能力名称",
+          duration: 2000
+        });
+      }
+    },
+    handleClickChangeOne(e) {
+      let leveltwo = this.leveltwo.slice();
+      delete this.form.level_two;
+      this.two = leveltwo.filter(item => item.parent === e);
     }
   }
 };
