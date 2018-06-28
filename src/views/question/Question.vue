@@ -24,7 +24,7 @@
         <el-table-column prop="id" label="问题ID"></el-table-column>
         <el-table-column prop="name" label="面试问题"></el-table-column>
         <el-table-column prop="ablity" label="能力标签"></el-table-column>
-        <el-table-column prop="level" label="能力等级"></el-table-column>
+        <el-table-column prop="ablity_level" label="能力等级"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button @click="handleClickEdit(scope.row)" type="text" size="small">编辑</el-button>
