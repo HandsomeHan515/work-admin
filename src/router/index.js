@@ -8,6 +8,14 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Home',
+      component: Home,
+      children: [
+        { path: '/index', name: '首页', component: () => import('@/views/index/Index') },
+      ]
+    },
+    {
+      path: '/',
       name: 'Ablity',
       component: Home,
       children: [
